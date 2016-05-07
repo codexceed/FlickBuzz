@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FlickBuzz</string>
+    <string name="num_col">2</string>
 </resources>
