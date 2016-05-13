@@ -1,5 +1,5 @@
 # FlickBuzz
-An app to check out latest movies, reviews and ratings.
+An android app to check out latest movies, reviews and ratings.
 
 The App will display a grid of posters sorted either by popularity of the respective movies or their ratings(popularity by default).
 On Tapping on a postr, the movie details will be displayed.
