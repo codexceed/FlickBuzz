@@ -2,6 +2,7 @@ package com.example.android.flickbuzz;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -120,6 +123,7 @@ public class DetailFragment extends Fragment {
             final String TMDB_DURATION = getString(R.string.tmdb_runtime);
             final String TMDB_RATING = getString(R.string.tmdb_rating);
             final String TMDB_SYNOPSIS = getString(R.string.tmdb_synopsis);
+            final String TMDB_POSTER = getString(R.string.tmdb_poster_param);
 
             TextView movieTitle = (TextView) rootView.findViewById(R.id.movie_title);
             TextView releaseYear = (TextView) rootView.findViewById(R.id.text_release_date);
@@ -130,12 +134,23 @@ public class DetailFragment extends Fragment {
 
             try {
                 JSONObject movieDetails = new JSONObject(movieJsonDetails);
-                String movieTitleStr = movieDetails.getString(TMDB_TITLE);
-                movieTitle.setText(movieTitleStr);
-                releaseYear.setText(movieDetails.getString(TMDB_RELEASE));
-                movieDuration.setText(movieDetails.getString(TMDB_DURATION));
-                movieRating.setText(movieDetails.getString(TMDB_RATING));
+                movieTitle.setText(movieDetails.getString(TMDB_TITLE));
+                releaseYear.setText(movieDetails.getString(TMDB_RELEASE).substring(0, 4));
+                movieDuration.setText(movieDetails.getString(TMDB_DURATION)+" min");
+                long ratingNum = movieDetails.getLong(TMDB_RATING);
+                if (ratingNum<5) {
+                    movieRating.setTextColor(Color.parseColor("#990000"));
+                }
+                else if (ratingNum>=5&&ratingNum<7) {
+                    movieRating.setTextColor(Color.parseColor("#008000"));
+                }
+                else {
+                    movieRating.setTextColor(Color.parseColor("#003399"));
+                }
+                movieRating.setText(movieDetails.getString(TMDB_RATING)+"/10");
                 movieSynopsis.setText(movieDetails.getString(TMDB_SYNOPSIS));
+                Picasso.with(getActivity()).load("http://image.tmdb.org/t/p/w342"+movieDetails.getString(TMDB_POSTER))
+                        .into(moviePoster);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);
                 e.printStackTrace();
