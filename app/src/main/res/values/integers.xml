@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="poster_height">800</integer>
+    <integer name="poster_height">810</integer>
+    <integer name="poster_width">539</integer>
 </resources>

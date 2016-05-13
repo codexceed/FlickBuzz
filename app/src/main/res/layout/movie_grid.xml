@@ -7,7 +7,7 @@
         android:id="@+id/movie_grid_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="@string/num_col"
+        android:numColumns="auto_fit"
         android:verticalSpacing="0dp"
         android:horizontalSpacing="0dp"
         android:gravity="center"
