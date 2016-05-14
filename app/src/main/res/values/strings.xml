@@ -4,7 +4,7 @@
     <string name="tmdb_results_param">results</string>
     <string name="tmdb_id_param">id</string>
     <string name="tmdb_poster_param">poster_path</string>
-    <string name="api_key_val">4064511603a2efc066f06ee9dc488a17</string>
+    <string name="api_key_val">getKeyFromTMDB</string>
     <string name="movie_db_base_url">http://api.themoviedb.org/3/discover/movie?</string>
     <string name="tmdb_sort_param">sort_by</string>
     <string name="tmdb_api_param">api_key</string>
