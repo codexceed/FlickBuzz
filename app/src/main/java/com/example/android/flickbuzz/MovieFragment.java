@@ -99,7 +99,7 @@ public class MovieFragment extends Fragment {
     public void refresh() {
         FetchMovieData movieData = new FetchMovieData();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-        String sort_by = sharedPreferences.getString(getString(R.string.pref_key_sort_by), "popularity.desc");
+        String sort_by = sharedPreferences.getString(getString(R.string.pref_key_sort_by), getString(R.string.param_sort_default));
         movieData.execute(sort_by);
     }
 
@@ -141,7 +141,7 @@ public class MovieFragment extends Fragment {
                 imageView = (ImageView) convertView;
             }
 
-            Picasso.with(mContext).load("http://image.tmdb.org/t/p/w342"+posterPaths[position])
+            Picasso.with(mContext).load(getString(R.string.tmdb_image_base_url)+posterPaths[position])
                     .into(imageView);
             return imageView;
         }

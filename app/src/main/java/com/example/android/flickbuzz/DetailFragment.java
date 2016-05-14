@@ -139,17 +139,17 @@ public class DetailFragment extends Fragment {
                 movieDuration.setText(movieDetails.getString(TMDB_DURATION)+" min");
                 long ratingNum = movieDetails.getLong(TMDB_RATING);
                 if (ratingNum<5) {
-                    movieRating.setTextColor(Color.parseColor("#990000"));
+                    movieRating.setTextColor(Color.parseColor(getString(R.string.text_color_bad)));
                 }
                 else if (ratingNum>=5&&ratingNum<7) {
-                    movieRating.setTextColor(Color.parseColor("#008000"));
+                    movieRating.setTextColor(Color.parseColor(getString(R.string.text_color_good)));
                 }
                 else {
-                    movieRating.setTextColor(Color.parseColor("#003399"));
+                    movieRating.setTextColor(Color.parseColor(getString(R.string.text_color_awesome)));
                 }
                 movieRating.setText(movieDetails.getString(TMDB_RATING)+"/10");
                 movieSynopsis.setText(movieDetails.getString(TMDB_SYNOPSIS));
-                Picasso.with(getActivity()).load("http://image.tmdb.org/t/p/w342"+movieDetails.getString(TMDB_POSTER))
+                Picasso.with(getActivity()).load(getString(R.string.tmdb_image_base_url)+movieDetails.getString(TMDB_POSTER))
                         .into(moviePoster);
             } catch (JSONException e) {
                 Log.e(LOG_TAG, e.getMessage(), e);

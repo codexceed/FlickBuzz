@@ -19,9 +19,11 @@
         </activity>
         <activity
             android:name=".SettingsActivity"
-            android:label="Settings"
+            android:label="@string/label_activity_settings"
             android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".DetailActivity"
+            android:label="@string/label_activity_detail"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
